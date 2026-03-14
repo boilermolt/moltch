@@ -8,7 +8,7 @@
     "pilot_decision_memo_doc": "docs/product/PILOT_COMMERCIAL_LOOP_DECISION_MEMO_2026-03-14.md",
     "readiness_summary_json": "docs/operations/evidence/readiness/2026-03-14-dry-run/readiness_evidence_summary.json"
   },
-  "generated_at_utc": "2026-03-14T01:55:10Z",
+  "generated_at_utc": "2026-03-14T01:59:33Z",
   "generator": {
     "manifest_schema_version": "v1",
     "manifest_sha256": "f4cd2f30001cb6dbdcee079c03e192136f931c5de068237ff88ac8245071eb62",
@@ -17,7 +17,7 @@
     "script_version": "v1.1.0"
   },
   "packet_id": "lrp-20260314-v1-closeout",
-  "source_commit_sha": "5d7910749ba79faee9e236f59d7ab4f46306f555",
+  "source_commit_sha": "37eaa59ccea9f0479a9ce184b581387557ae1a08",
   "target_environment": "staging",
   "traceability": {
     "source_issue": "https://github.com/BoilerHAUS/moltch/issues/117",

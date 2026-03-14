@@ -159,6 +159,20 @@ check_launch_readiness_packet_builder() {
   [[ -f "$out_dir/launch_readiness_packet.json" ]] || fail "launch readiness packet json missing after build"
   [[ -f "$out_dir/launch_readiness_packet.md" ]] || fail "launch readiness packet markdown missing after build"
 
+  # Determinism proof: same manifest + fixed timestamp/SHA must produce byte-identical JSON.
+  mkdir -p .tmp
+  local det_a="$(mktemp -d .tmp/launch-packet-det-a.XXXXXX)"
+  local det_b="$(mktemp -d .tmp/launch-packet-det-b.XXXXXX)"
+  local fixed_ts="2026-03-14T00:00:00Z"
+  local fixed_sha="determinism-test-sha"
+
+  python3 "$builder" --manifest "$manifest" --out-dir "$det_a" --generated-at-utc "$fixed_ts" --source-commit-sha "$fixed_sha" >/dev/null
+  python3 "$builder" --manifest "$manifest" --out-dir "$det_b" --generated-at-utc "$fixed_ts" --source-commit-sha "$fixed_sha" >/dev/null
+
+  cmp -s "$det_a/launch_readiness_packet.json" "$det_b/launch_readiness_packet.json" || fail "launch readiness packet JSON is not deterministic for fixed inputs"
+
+  rm -rf "$det_a" "$det_b"
+
   if python3 "$builder" --manifest "$invalid_manifest" --out-dir "$out_dir" >/dev/null 2>&1; then
     fail "invalid manifest unexpectedly passed launch-readiness packet build"
   fi

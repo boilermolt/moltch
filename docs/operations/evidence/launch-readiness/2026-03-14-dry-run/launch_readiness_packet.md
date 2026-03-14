@@ -1,8 +1,8 @@
 # launch-readiness packet
 
 - packet_id: lrp-20260314-v1-closeout
-- generated_at_utc: 2026-03-14T01:55:10Z
-- source_commit_sha: `5d7910749ba79faee9e236f59d7ab4f46306f555`
+- generated_at_utc: 2026-03-14T01:59:33Z
+- source_commit_sha: `37eaa59ccea9f0479a9ce184b581387557ae1a08`
 - target_environment: staging
 - decision: **go**
 
